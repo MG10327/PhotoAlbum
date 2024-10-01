@@ -8,6 +8,8 @@ import { Grid } from '@material-ui/core'
 const App = () => {
   const classes = useStyles()
 
+  const cards = [1,2,3,4,5,6,7,8,9]
+
   return (
     <>
       <CssBaseline />
@@ -39,26 +41,32 @@ const App = () => {
           </div>
           <Container className={classes.cardGrid} maxWidth="md">
             <Grid2 container spacing={4}>
-              <Grid2 item >
-                <Card className={classes.card}>
-                  <CardMedia
-                  className={classes.cardMedia}
-                  image="../assets/water.jpg"
-                  title="Image title"
-                   />
-                   <CardContent className={classes.CardContent}>
-                    <Typography gutterBottom variant='h5'>Heading</Typography>
-                    <Typography> This is a media card. You can use this section to describe the content</Typography>
-                   </CardContent>
-                   <CardActions>
-                    <Button size='small' color="primary">View</Button>
-                    <Button size='small' color="secondary">Edit</Button>
-                   </CardActions>
-                </Card>
-              </Grid2>
+              {cards.map((card)=> (
+                <Grid2 item key={card} size={{xs: 12, sm: 6, md: 4}}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                    className={classes.cardMedia}
+                    image="../assets/water.jpg"
+                    title="Image title"
+                    />
+                    <CardContent className={classes.CardContent}>
+                      <Typography gutterBottom variant='h5'>Heading</Typography>
+                      <Typography> This is a media card. You can use this section to describe the content</Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button size='small' color="primary">View</Button>
+                      <Button size='small' color="secondary">Edit</Button>
+                    </CardActions>
+                  </Card>
+                </Grid2>
+              ))}
             </Grid2>
             </Container>
         </main>
+        <footer className={classes.footer}>
+              <Typography variant='h6' alignItems="center" gutterBottom>Footer</Typography>
+              <Typography variant="subtitle1" alignItems='center' color="textSecondary">Something here to give the footer a purpose.</Typography>
+        </footer>
     </>
   )
 }
